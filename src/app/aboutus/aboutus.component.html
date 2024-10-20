@@ -1,0 +1,81 @@
+<section id="about" class="about text-center mt-5">
+    <div class="container">
+        <!-- Top Image -->
+        <img src="assets/food-delivery-2.jpg" alt="Delicious Food" class="img-fluid mb-4" style="max-width: 55%; height: auto;">
+
+        <div class="section-title">
+            <h2>{{ title }}</h2>
+            <p class="text-light"><strong>{{ mission }}</strong></p> <!-- Changed to text-light -->
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <h3 class="text-light">Our Ratings</h3> <!-- Changed to text-light -->
+                <div class="skills-content">
+                    <div *ngFor="let rating of [ratings.fiveStar, ratings.fourStar, ratings.threeStar, ratings.twoStar, ratings.oneStar]; let i = index">
+                        <div class="rating-bar">
+                            <span class="skill text-light">{{ 5 - i }} Star</span> <!-- Changed to text-light -->
+                            <span class="val text-light">{{ rating }}%</span> <!-- Changed to text-light -->
+                            <div class="progress">
+                                <div class="progress-bar" 
+                                     role="progressbar" 
+                                     [style.width]="rating + '%'" 
+                                     [ngClass]="getRatingClass(5 - i)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 pt-4 pt-lg-0">
+                <h3 class="text-light">Our Status</h3> <!-- Changed to text-light -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="count-box">
+                            <span class="text-light" data-toggle="counter-up">{{ stats.happyCustomers }}</span> <!-- Changed to text-light -->
+                            <p><strong class="text-light">Happy Customers</strong> <i class="fas fa-thumbs-up" style="color: #f39c12;"></i></p> <!-- Changed to text-light -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="count-box">
+                            <span class="text-light" data-toggle="counter-up">{{ stats.items }}</span> <!-- Changed to text-light -->
+                            <p><strong class="text-light">Items Delivered</strong> <i class="fas fa-box" style="color: #f39c12;"></i></p> <!-- Changed to text-light -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="count-box">
+                            <span class="text-light" data-toggle="counter-up">{{ stats.supportHours }}</span> <!-- Changed to text-light -->
+                            <p><strong class="text-light">Hours of Support</strong> <i class="fas fa-headset" style="color: #f39c12;"></i></p> <!-- Changed to text-light -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="count-box">
+                            <span class="text-light" data-toggle="counter-up">{{ stats.hardWorkers }}</span> <!-- Changed to text-light -->
+                            <p><strong class="text-light">Hard Workers</strong> <i class="fas fa-people-carry" style="color: #f39c12;"></i></p> <!-- Changed to text-light -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="text-light">Meet Our Team</h3> <!-- Changed to text-light -->
+        <div class="row">
+            <div *ngFor="let member of teamMembers" class="col-lg-4 col-md-6">
+                <div class="member">
+                    <img [src]="member.image" class="img-fluid" alt="{{ member.name }}">
+                    <div class="member-info">
+                        <h4 class="text-light">{{ member.name }}</h4> <!-- Changed to text-light -->
+                        <div class="social">
+                            <a [href]="member.twitter" target="_blank" *ngIf="member.twitter"><i class="fab fa-twitter text-light"></i></a> <!-- Changed to text-light -->
+                            <a [href]="member.github" target="_blank"><i class="fab fa-github text-light"></i></a> <!-- Changed to text-light -->
+                            <a [href]="member.linkedin" target="_blank" *ngIf="member.linkedin"><i class="fab fa-linkedin text-light"></i></a> <!-- Changed to text-light -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

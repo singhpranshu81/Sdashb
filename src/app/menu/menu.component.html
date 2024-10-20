@@ -1,0 +1,70 @@
+<section class="scrolling-alert-section">
+  <button class="btn btn-outline-info scrolling-alert" role="alert">
+    <b>Order Your Favorite Meals Today! 🍕</b>
+  </button>
+</section>
+
+<div id="menu" class="menu-container">
+  <div *ngFor="let item of items" class="food-item" [attr.data-name]="item.name" [attr.data-price]="item.price">
+    <h3>
+      <img *ngIf="item.image" [src]="item.image" alt="{{ item.name }}" class="food-image" />
+      {{ item.name }}
+      <button (click)="bookmarkItem(item)" class="bookmark-btn">
+        <span *ngIf="isBookmarked(item)">❤️</span>
+        <span *ngIf="!isBookmarked(item)">🤍</span>
+      </button>
+    </h3>
+    <p>Price: ₹{{ item.price | number: '1.2-2' }}</p>
+
+    <div class="discount-info" *ngIf="item.discount">
+      <span class="discount-badge">
+        <strong>{{ item.discount }}% OFF</strong>
+      </span>
+    </div>
+
+    <div class="quantity-controls">
+      <button (click)="addToCart(item.name, item.price, 1)">➕</button>
+      <span class="quantity">{{ getQuantity(item.name) }}</span>
+      <button (click)="addToCart(item.name, item.price, -1)">➖</button>
+    </div>
+  </div>
+</div>
+
+<h2>Shopping Cart</h2>
+<ul class="cart-list">
+  <ng-container *ngFor="let item of cartService.getCart()">
+    <li class="cart-item">
+      <div>
+        <strong>{{ item.name }}</strong>
+      </div>
+      <div>
+        Original Price: ₹{{ item.price | number: '1.2-2' }} x {{ item.quantity }} = ₹{{ (item.price * item.quantity) | number: '1.2-2' }}
+      </div>
+      <div *ngIf="item.discount">
+        Discount: ₹{{ calculateAmount(item) | number: '1.2-2' }}
+        <button 
+          *ngIf="!item.discountApplied" 
+          (click)="applyDiscount(item)" 
+          class="btn btn-success btn-sm" 
+          style="margin-left: 10px;">
+          Avail Offer
+        </button>
+      </div>
+      <div>
+        Total amount: ₹{{ calculateTotalamount(item) | number: '1.2-2' }}
+      </div>
+      <hr />
+    </li>
+  </ng-container>
+</ul>
+
+<p *ngIf="cartService.getCart().length > 0">
+  <strong>Total Amount: ₹{{ getTotal() | number: '1.2-2' }}</strong>
+</p>
+
+<h2>Bookmarked Items</h2>
+<ul class="bookmarked-list">
+  <li *ngFor="let item of bookmarkedItems" class="bookmarked-item">
+    {{ item.name }} - ₹{{ item.price | number: '1.2-2' }}
+  </li>
+</ul>

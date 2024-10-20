@@ -1,0 +1,54 @@
+.menu-container {
+  margin: 20px;
+}
+
+.food-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  position: right;
+}
+
+.bookmark-icon {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+
+.discount-info {
+  margin-top: 5px;
+}
+
+.discount-badge {
+  font-weight: bold;
+  color: #000; /* Black text color */
+  background: linear-gradient(45deg, #ff6b6b, #ffb84d); /* Colorful gradient */
+  padding: 0.5em 1em;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+.food-image {
+  width: 50px; /* Set desired width */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Space between image and text */
+  vertical-align: middle; /* Align with text */
+}
+
+
+
+
+.quantity-controls {
+  margin-top: 10px;
+}
+
+.cart-list, .bookmarked-list {
+  margin: 20px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item, .bookmarked-item {
+  margin: 5px 0;
+}
